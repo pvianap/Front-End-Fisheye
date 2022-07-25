@@ -13,6 +13,7 @@ async function getPhotographers() {
 }
 
 //Récupère les données du photographe de la page
+var photographer;
 async function photographerData() {
   photographersData = await getPhotographers();
   let pageId = getId();
@@ -22,16 +23,22 @@ async function photographerData() {
 }
 
 //Récupère les données des medias du photographe
+var mediaData;
 async function mediasData() {
   const allMedias = await new Api(url).getMediaData();
   let pageId = getId();
+
   mediaData = Object.values(allMedias).filter(
     (i) => i.photographerId == `${pageId}`
   );
-  return mediaData;
+  mediaData.forEach((media) => (media.isLiked = false));
 }
+mediasData();
 
 //Display in DOM all elements
+var lightboxModel;
+
+////Display header
 async function displayPhotographerPage(photographer) {
   const photographerHeader = document.querySelector('.photograph-header');
   const button = document.querySelector('button');
@@ -43,22 +50,54 @@ async function displayPhotographerPage(photographer) {
   photographerHeader.insertBefore(profileDOM, button);
   photographerHeader.appendChild(profilePhoto);
 
+  /////Display sortbar
   const sortDOM = sortFactory().getSortDOM();
-  photographerHeader.parentNode.appendChild(sortDOM);
-
   const mediaContainer = document.createElement('section');
   mediaContainer.setAttribute('class', 'mediaContainer');
   photographerHeader.parentNode.appendChild(mediaContainer);
-  const mediaData = await mediasData();
+
+  mediaDisplay();
+}
+
+// MEDIA DISPLAY
+function mediaDisplay() {
+  document.querySelector('.mediaContainer').innerHTML = '';
   mediaData.forEach((media) => {
-    const mediaModel = mediaFactory(media, photographer);
+    const mediaModel = new mediaFactory(media, photographer);
     const mediaCardDOM = mediaModel.getMediaCardDOM();
-    mediaContainer.appendChild(mediaCardDOM);
+    document.querySelector('.mediaContainer').appendChild(mediaCardDOM);
+  });
+
+  // DISPLAY LIGHTBOX
+  function setLightbox() {
+    lightboxModel = new LightboxModel(mediaData, photographer);
+    var images = document.querySelectorAll('.mediaCard img, .mediaCard video');
+    images.forEach((image, index) => {
+      image.addEventListener('click', function () {
+        lightboxModel.displayLightbox(index);
+      });
+    });
+  }
+
+  setLightbox();
+
+  // LIKES
+  var hearts = document.querySelectorAll('.mediaCard i');
+  var likes = new Likes(mediaData.isLiked);
+  hearts.forEach((heart, index) => {
+    heart.addEventListener(
+      'click',
+      function () {
+        likes.like(index);
+        mediaDisplay();
+      },
+      { once: true }
+    );
   });
 }
 
 async function initPhotographerPage() {
-  const photographer = await photographerData();
+  photographer = await photographerData();
   await displayPhotographerPage(photographer);
 }
 

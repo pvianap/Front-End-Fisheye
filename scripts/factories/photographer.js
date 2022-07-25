@@ -10,6 +10,7 @@ function photographerFactory(data) {
       'onClick',
       `location.href='/photographer.html?id=${id}'`
     );
+    article.setAttribute('tabindex', '0');
     const img = document.createElement('img');
     img.setAttribute('src', picture);
     img.setAttribute('alt', name);
