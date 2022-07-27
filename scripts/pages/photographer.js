@@ -39,6 +39,12 @@ mediasData();
 var lightboxModel;
 
 ////Display header
+const logo = document.querySelector('.logo');
+logo.addEventListener('keyup', (event) => {
+  if (event.isComposing || event.keyCode === 13) {
+    return (window.location.href = `/index.html`);
+  }
+});
 async function displayPhotographerPage(photographer) {
   const photographerHeader = document.querySelector('.photograph-header');
   const button = document.querySelector('button');
@@ -62,38 +68,22 @@ async function displayPhotographerPage(photographer) {
 // MEDIA DISPLAY
 function mediaDisplay() {
   document.querySelector('.mediaContainer').innerHTML = '';
-  mediaData.forEach((media) => {
+  mediaData.forEach((media, index) => {
     const mediaModel = new mediaFactory(media, photographer);
-    const mediaCardDOM = mediaModel.getMediaCardDOM();
+    const mediaCardDOM = mediaModel.getMediaCardDOM(index);
     document.querySelector('.mediaContainer').appendChild(mediaCardDOM);
   });
 
-  // DISPLAY LIGHTBOX
+  // DISPLAY LIGHTBOX TARGET
   function setLightbox() {
     lightboxModel = new LightboxModel(mediaData, photographer);
-    var images = document.querySelectorAll('.mediaCard img, .mediaCard video');
-    images.forEach((image, index) => {
-      image.addEventListener('click', function () {
-        lightboxModel.displayLightbox(index);
-      });
-    });
   }
 
   setLightbox();
 
   // LIKES
-  var hearts = document.querySelectorAll('.mediaCard i');
-  var likes = new Likes(mediaData.isLiked);
-  hearts.forEach((heart, index) => {
-    heart.addEventListener(
-      'click',
-      function () {
-        likes.like(index);
-        mediaDisplay();
-      },
-      { once: true }
-    );
-  });
+  refreshLikes();
+  new LikeBox(photographer, mediaData);
 }
 
 async function initPhotographerPage() {

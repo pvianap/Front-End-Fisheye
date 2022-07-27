@@ -89,27 +89,7 @@ h5 {
   color: var(--tertiary-color);
 }
 
-/* MOBILE */
-/* h2 @media (max-width: 700px) {
-  * {
-    max-width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  .photographer_section {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-  }
-  h1 {
-    margin: 0;
-  }
-  .logo {
-    margin: 0;
-  }
-  header {
-    padding: 5vmin;
-    justify-content: space-around;
-  }
-} */
+*:focus {
+  border: solid black;
+  transition: 0.2s 0.2s ease-in-out;
+}

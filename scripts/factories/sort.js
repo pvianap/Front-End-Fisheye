@@ -48,3 +48,43 @@ function sortFactory() {
   }
   return { getSortDOM, mediaSorted };
 }
+
+// LISTENERS
+
+// document
+//   .querySelector('.sortStandby, .sortByPop')
+//   .addEventListener('focus', () => {
+//     const dropdown = document.querySelector('.dropdown');
+//     dropdown.style.opacity = 1;
+//     dropdown.style.zIndex = 0;
+//   });
+
+// document.querySelector('.sortByTitre').addEventListener('blur', () => {
+//   const dropdown = document.querySelector('.dropdown');
+//   dropdown.setAttribute('opacity', 0);
+//   dropdown.style.zIndex = -1;
+// });
+
+const pop = document;
+pop.querySelector('.sortByPop').addEventListener('keyup', (event) => {
+  if (event.isComposing || event.keyCode === 13) {
+    sortFactory().mediaSorted(mediaData, 'likes');
+    mediaDisplay();
+  }
+});
+
+const date = document;
+date.querySelector('.sortByDate').addEventListener('keyup', (event) => {
+  if (event.isComposing || event.keyCode === 13) {
+    sortFactory().mediaSorted(mediaData, 'date');
+    mediaDisplay();
+  }
+});
+
+const titre = document;
+titre.querySelector('.sortByTitre').addEventListener('keyup', (event) => {
+  if (event.isComposing || event.keyCode === 13) {
+    sortFactory().mediaSorted(mediaData, 'title');
+    mediaDisplay();
+  }
+});

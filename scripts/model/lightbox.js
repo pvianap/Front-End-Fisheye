@@ -53,11 +53,24 @@ class LightboxModel {
 
 // LISTENERS LIGHTBOX
 
-document
-  .querySelector('.aside_right .fa-x')
-  .addEventListener('click', function () {
-    lightboxModel.closeLightbox();
-  });
+// QUIT BUTTON
+const closeBtn = document.querySelector('.aside_right .fa-x');
+closeBtn.addEventListener('click', function () {
+  lightboxModel.closeLightbox();
+});
+
+document.addEventListener('keyup', (event) => {
+  if (event.isComposing || event.keyCode === 27) {
+    return lightboxModel.closeLightbox();
+  }
+});
+
+// RIGHT BUTTON
+document.addEventListener('keyup', (event) => {
+  if (event.isComposing || event.keyCode === 39) {
+    return lightboxModel.nextLightbox();
+  }
+});
 
 document
   .querySelector('.fa-angle-right')
@@ -65,6 +78,9 @@ document
     lightboxModel.nextLightbox();
   });
 
-document.querySelector('.fa-angle-left').addEventListener('click', function () {
-  lightboxModel.beforeLightbox();
+// LEFT BUTTON
+document.addEventListener('keyup', (event) => {
+  if (event.isComposing || event.keyCode === 37) {
+    return lightboxModel.beforeLightbox();
+  }
 });

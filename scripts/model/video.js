@@ -15,13 +15,22 @@ class VideoModel {
       return heart.setAttribute('style', 'font-weight:100');
     }
   }
-  getMediaCardDOM() {
+  getMediaCardDOM(index) {
     const picture = `assets/photos/${this._photographerName}/${this._video}`;
     const mediaCard = document.createElement('div');
     mediaCard.setAttribute('class', 'mediaCard');
     const img = document.createElement('video');
     img.setAttribute('src', picture);
     img.setAttribute('alt', this._title);
+    img.setAttribute('tabindex', '0');
+    img.addEventListener('keyup', (event) => {
+      if (event.isComposing || event.keyCode === 13) {
+        return lightboxModel.displayLightbox(index);
+      }
+    });
+    img.addEventListener('click', function () {
+      lightboxModel.displayLightbox(index);
+    });
     const subTitle = document.createElement('div');
     subTitle.setAttribute('class', 'mediaSubTitle');
     const mediaTitle = document.createElement('p');

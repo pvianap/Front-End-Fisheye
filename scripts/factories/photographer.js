@@ -10,6 +10,11 @@ function photographerFactory(data) {
       'onClick',
       `location.href='/photographer.html?id=${id}'`
     );
+    article.addEventListener('keyup', (event) => {
+      if (event.isComposing || event.keyCode === 13) {
+        return (window.location.href = `/photographer.html?id=${id}`);
+      }
+    });
     article.setAttribute('tabindex', '0');
     const img = document.createElement('img');
     img.setAttribute('src', picture);

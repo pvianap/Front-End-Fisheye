@@ -16,13 +16,22 @@ class PhotoModel {
     }
   }
 
-  getMediaCardDOM() {
+  getMediaCardDOM(index) {
     const picture = `assets/photos/${this._photographerName}/${this._image}`;
     const mediaCard = document.createElement('div');
     mediaCard.setAttribute('class', 'mediaCard');
     const img = document.createElement('img');
     img.setAttribute('src', picture);
     img.setAttribute('alt', this._title);
+    img.setAttribute('tabindex', '0');
+    img.addEventListener('keyup', (event) => {
+      if (event.isComposing || event.keyCode === 13) {
+        return lightboxModel.displayLightbox(index);
+      }
+    });
+    img.addEventListener('click', function () {
+      lightboxModel.displayLightbox(index);
+    });
     const subTitle = document.createElement('div');
     subTitle.setAttribute('class', 'mediaSubTitle');
     const mediaTitle = document.createElement('p');
@@ -30,9 +39,11 @@ class PhotoModel {
     const nbLikes = document.createElement('p');
     nbLikes.textContent = this._likes;
     const heart = document.createElement('i');
+    heart.setAttribute('tabindex', '0');
     heart.setAttribute('class', 'fa-solid fa-heart');
     this.isLiked(heart);
     console.log(this.isLiked(heart));
+
     mediaCard.appendChild(img);
     mediaCard.appendChild(subTitle);
     subTitle.appendChild(mediaTitle);
