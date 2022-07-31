@@ -21,9 +21,12 @@ class PhotoModel {
     const mediaCard = document.createElement('div');
     mediaCard.setAttribute('class', 'mediaCard');
     const img = document.createElement('img');
-    img.setAttribute('src', picture);
-    img.setAttribute('alt', this._title);
-    img.setAttribute('tabindex', '0');
+    Object.assign(img, {
+      src: picture,
+      alt: this._title,
+      tabindex: 0,
+    });
+
     img.addEventListener('keyup', (event) => {
       if (event.isComposing || event.keyCode === 13) {
         return lightboxModel.displayLightbox(index);

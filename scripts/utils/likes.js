@@ -1,8 +1,3 @@
-function addLikes(index) {
-  mediaData[index].likes++;
-  console.log(mediaData[index].likes);
-}
-
 class Likes {
   constructor(isLiked) {
     this._isLiked = isLiked;
