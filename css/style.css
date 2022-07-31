@@ -39,7 +39,9 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
+
   margin-top: 100px;
+  margin-bottom: 121px;
   flex-wrap: wrap;
 }
 
@@ -57,8 +59,8 @@ h1 {
 }
 
 .photographer_section article img {
-  height: 277px;
-  width: 263px;
+  height: 200px;
+  width: 200px;
   border-radius: 100%;
   object-fit: cover;
 }

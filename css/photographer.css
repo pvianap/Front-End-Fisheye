@@ -26,10 +26,25 @@ body {
 }
 
 .photograph-header img {
-  height: 277px;
-  width: 263px;
+  width: 200px;
+  height: 200px;
   border-radius: 100%;
   object-fit: cover;
+}
+
+.photograph-header h3 {
+  font-size: 64px;
+  font-weight: 400;
+  margin-bottom: 19px;
+}
+.photograph-header h3 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.photograph-header h4 {
+  font-size: 18px;
+  font-weight: 400;
 }
 
 article {
@@ -44,13 +59,13 @@ article h2 {
 }
 
 article h3 {
-  font-size: 24px;
+  font-size: 13px;
 }
 
 article h4 {
   margin: 0;
 
-  font-size: 18px;
+  font-size: 10px;
 }
 
 /* SORT BAR */
@@ -59,7 +74,7 @@ article h4 {
   display: flex;
   align-items: top;
   height: 100px;
-  margin: 0 100px;
+  margin: 10px auto 10px 97px;
   display: flex;
   font-size: 18px;
   width: 250px;
@@ -95,7 +110,7 @@ li {
   top: 0;
   position: absolute;
   border-radius: 5px;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   align-items: center;
   height: 69px;
   box-sizing: border-box;
@@ -131,7 +146,7 @@ li {
   position: absolute;
   opacity: 0;
   z-index: -1;
-  transition: 0.3s 0.3s all ease-in-out;
+  transition: 0.2s all ease-in-out;
   width: 100%;
   height: 170px;
   box-sizing: border-box;
@@ -170,7 +185,6 @@ li {
 
 .sortByDate {
   justify-content: flex-start;
-  transition: all 0.3s ease-in-out;
   height: 50px;
 
   box-sizing: border-box;
@@ -181,7 +195,6 @@ li {
 .sortByTitre {
   border-radius: 0 0 5px 5px;
   justify-content: flex-start;
-  transition: all 0.4s ease-in-out;
   height: 50px;
 
   box-sizing: border-box;
@@ -190,32 +203,37 @@ li {
 /* MEDIA CARD */
 .mediaContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   max-width: 1240px;
   margin-right: auto;
   margin-left: auto;
   flex-wrap: wrap;
 }
 .mediaCard {
-  margin-bottom: 20px;
+  margin: 10px;
 }
+
 .mediaSubTitle {
   display: flex;
   color: var(--primary-color);
   font-size: 24px;
   font-weight: 400;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+.mediaSubTitle h4 {
+  display: flex;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .mediaSubTitle p {
-  display: flex;
-  margin: 0;
-  size: 24px;
-}
-
-.mediaSubTitle p:nth-child(2) {
-  justify-self: flex-end;
-  margin-right: 10px;
-  margin-left: auto;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 5px 0 auto;
 }
 
 .mediaSubTitle i {
@@ -223,17 +241,12 @@ li {
   align-self: center;
 }
 
-.mediaCard img {
-  width: 350px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
+.mediaCard img,
 .mediaCard video {
   width: 350px;
   height: 300px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 /* CONTACT BUTTON */
@@ -248,6 +261,12 @@ li {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.contact_button:hover {
+  background-color: var(--secondary-color);
+  transition: 0.5s ease-in-out;
+  color: black;
 }
 
 .modal {
@@ -350,16 +369,25 @@ form input {
 
 .likeBox {
   width: 376px;
-  height: 89px;
+  height: 68px;
   background-color: var(--secondary-color);
   color: black;
   display: flex;
   position: fixed;
   bottom: 0;
-  right: 30px;
+  right: 36px;
   border-radius: 5px;
-  justify-content: space-around;
-  font-size: 36px;
+  font-size: 24px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 22px 31px 22px 31px;
+  box-sizing: border-box;
+}
+
+.likeBox i {
+  margin: 0 44px 0 10px;
 }
 
 .fa-hear::before {

@@ -10,8 +10,7 @@ class LightboxModel {
     if (!this._result.querySelector('img')) {
       this._result.querySelector('video').setAttribute('controls', 'controls');
     }
-    this._result.querySelector('i').remove();
-    this._result.querySelectorAll('p')[1].remove();
+    this._result.querySelector('.mediaSubTitle').remove();
     return this._result;
   }
 
@@ -20,7 +19,6 @@ class LightboxModel {
     this.openLightbox();
     const result = this.getLightCardDOM();
     const aside = document.querySelector('.aside_right');
-
     return aside.parentNode.insertBefore(result, aside);
   }
 
@@ -37,7 +35,6 @@ class LightboxModel {
       this._key++;
       console.log(this._key);
       this.displayLightbox(this._key);
-    } else {
     }
   }
   beforeLightbox() {
@@ -46,7 +43,6 @@ class LightboxModel {
       this._key--;
       console.log(this._key);
       this.displayLightbox(this._key);
-    } else {
     }
   }
 }

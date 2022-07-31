@@ -37,7 +37,7 @@ class PhotoModel {
     });
     const subTitle = document.createElement('div');
     subTitle.setAttribute('class', 'mediaSubTitle');
-    const mediaTitle = document.createElement('p');
+    const mediaTitle = document.createElement('h4');
     mediaTitle.textContent = `${this._title}`;
     const nbLikes = document.createElement('p');
     nbLikes.textContent = this._likes;
