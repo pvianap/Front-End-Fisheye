@@ -19,7 +19,8 @@ class LightboxModel {
     this.openLightbox();
     const result = this.getLightCardDOM();
     const aside = document.querySelector('.aside_right');
-    return aside.parentNode.insertBefore(result, aside);
+    aside.parentNode.insertBefore(result, aside);
+    document.querySelector('.lightbox_modal .mediaCard').firstChild.focus();
   }
 
   openLightbox() {
