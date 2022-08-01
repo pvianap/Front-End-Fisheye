@@ -7,7 +7,6 @@ function getId() {
 
 //Récupère les données des photgraphes
 async function getPhotographers() {
-  //     // Penser à remplacer par les données récupérées dans le json
   let photographers = await new Api(url).getPhotographersData();
   return photographers;
 }
@@ -35,33 +34,15 @@ async function mediasData() {
 }
 mediasData();
 
-//Display in DOM all elements
-var lightboxModel;
-
-////Display header
-const logo = document.querySelector('.logo');
-logo.addEventListener('keyup', (event) => {
-  if (event.isComposing || event.keyCode === 13) {
-    return (window.location.href = `/index.html`);
-  }
-});
 async function displayPhotographerPage(photographer) {
-  const photographerHeader = document.querySelector('.photograph-header');
-  const button = document.querySelector('button');
-  const photographerModel = profileFactory(photographer);
+  //Display header
+  await new PhotographerHeader(photographer);
 
-  const profileDOM = photographerModel.getProfileDOM();
-  const profilePhoto = photographerModel.getProfilePhoto();
-
-  photographerHeader.insertBefore(profileDOM, button);
-  photographerHeader.appendChild(profilePhoto);
-
-  /////Display sortbar
+  //Display sortbar
   const sortDOM = sortFactory().getSortDOM();
   const mediaContainer = document.createElement('section');
   mediaContainer.setAttribute('class', 'mediaContainer');
-  photographerHeader.parentNode.appendChild(mediaContainer);
-
+  document.querySelector('main').appendChild(mediaContainer);
   mediaDisplay();
 }
 
