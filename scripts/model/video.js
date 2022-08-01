@@ -31,6 +31,7 @@ class VideoModel {
     img.addEventListener('click', function () {
       lightboxModel.displayLightbox(index);
     });
+    img.setAttribute('tabindex', '0');
     const subTitle = document.createElement('div');
     subTitle.setAttribute('class', 'mediaSubTitle');
     const mediaTitle = document.createElement('h4');
@@ -38,6 +39,7 @@ class VideoModel {
     const nbLikes = document.createElement('p');
     nbLikes.textContent = this._likes;
     const heart = document.createElement('i');
+    heart.setAttribute('tabindex', '0');
     heart.setAttribute('class', 'fa-solid fa-heart');
     this.isLiked(heart);
     mediaCard.appendChild(img);

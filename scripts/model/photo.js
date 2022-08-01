@@ -35,6 +35,7 @@ class PhotoModel {
     img.addEventListener('click', function () {
       lightboxModel.displayLightbox(index);
     });
+    img.setAttribute('tabindex', '0');
     const subTitle = document.createElement('div');
     subTitle.setAttribute('class', 'mediaSubTitle');
     const mediaTitle = document.createElement('h4');
