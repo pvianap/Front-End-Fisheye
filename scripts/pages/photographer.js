@@ -46,7 +46,7 @@ async function displayPhotographerPage(photographer) {
   mediaDisplay();
 }
 
-// MEDIA DISPLAY
+//Display media
 function mediaDisplay() {
   document.querySelector('.mediaContainer').innerHTML = '';
   mediaData.forEach((media, index) => {
@@ -55,14 +55,14 @@ function mediaDisplay() {
     document.querySelector('.mediaContainer').appendChild(mediaCardDOM);
   });
 
-  // DISPLAY LIGHTBOX TARGET
+  //Display lightbox
   function setLightbox() {
     lightboxModel = new LightboxModel(mediaData, photographer);
   }
 
   setLightbox();
 
-  // LIKES
+  //Likes refresh
   refreshLikes();
   new LikeBox(photographer, mediaData);
 }

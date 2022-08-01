@@ -6,6 +6,7 @@ class ContactModal {
     this.$contactButton = document.querySelector('.contact_button');
     this.$closeButton = document.querySelector('.modal header img');
     this.$submitButton = document.querySelector('.submitButton');
+    this.$firstInput = document.querySelector('#name');
     this.addListener();
   }
 
@@ -13,7 +14,7 @@ class ContactModal {
     this.$main.setAttribute('aria-hidden', 'true');
     this.$modal.setAttribute('aria-hidden', 'false');
     this.$modal.style.display = 'block';
-    this.$closeButton.focus();
+    this.$firstInput.focus();
     this.contactHeaderDOM();
   }
 
@@ -29,7 +30,7 @@ class ContactModal {
     name.innerText = photographer.name;
   }
 
-  submitInputs() {
+  getMailContent() {
     const name = document.querySelector('#name').value;
     const last = document.querySelector('#last').value;
     const email = document.querySelector('#email').value;
@@ -45,23 +46,12 @@ class ContactModal {
     });
   }
 
-  formSubmit() {
-    const modal = document.querySelector('.modal');
-    modal.addEventListener('submit', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      this.submitInputs();
-      this.cleanInputs();
-      this.closeModal();
-    });
-  }
-
   addListener() {
-    this.$contactButton.addEventListener('click', (e) => {
+    this.$contactButton.addEventListener('click', () => {
       this.openModal();
     });
 
-    this.$closeButton.addEventListener('click', (e) => {
+    this.$closeButton.addEventListener('click', () => {
       this.closeModal();
     });
     document.addEventListener('keyup', (e) => {
@@ -72,7 +62,7 @@ class ContactModal {
     this.$modal.addEventListener('submit', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      this.submitInputs();
+      this.getMailContent();
       this.cleanInputs();
       this.closeModal();
     });

@@ -1,7 +1,6 @@
 class PhotographerHeader {
   constructor(photographer) {
     this._photographer = photographer;
-    console.log(this._photographer);
     this.addListeners();
     this.displayHeader();
   }

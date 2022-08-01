@@ -33,7 +33,6 @@ class LightboxModel {
     if (this._key < this._mediaData.length - 1) {
       document.querySelector('.lightbox_modal .mediaCard').remove();
       this._key++;
-      console.log(this._key);
       this.displayLightbox(this._key);
     }
   }
@@ -41,7 +40,6 @@ class LightboxModel {
     if (this._key > 0) {
       document.querySelector('.lightbox_modal .mediaCard').remove();
       this._key--;
-      console.log(this._key);
       this.displayLightbox(this._key);
     }
   }

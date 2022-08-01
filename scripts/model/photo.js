@@ -45,8 +45,6 @@ class PhotoModel {
     heart.setAttribute('tabindex', '0');
     heart.setAttribute('class', 'fa-solid fa-heart');
     this.isLiked(heart);
-    console.log(this.isLiked(heart));
-
     mediaCard.appendChild(img);
     mediaCard.appendChild(subTitle);
     subTitle.appendChild(mediaTitle);
