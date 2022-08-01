@@ -1,23 +1,61 @@
-function displayModal() {
-  const modal = document.getElementById('contact_modal');
-  modal.style.display = 'block';
-  contactHeaderDOM();
-}
+class ContactModal {
+  constructor() {
+    this.$main = document.querySelector('main');
+    this.$body = document.querySelector('body');
+    this.$modal = document.querySelector('#contact_modal');
+    this.$contactButton = document.querySelector('.contact_button');
+    this.$closeButton = document.querySelector('.modal header img');
+    this.addListener();
+  }
 
-function closeModal() {
-  const modal = document.getElementById('contact_modal');
-  modal.style.display = 'none';
-}
+  openModal() {
+    this.$main.setAttribute('aria-hidden', 'true');
+    this.$modal.setAttribute('aria-hidden', 'false');
+    this.$modal.style.display = 'block';
+    this.$closeButton.focus();
+    this.contactHeaderDOM();
+  }
 
-function contactHeaderDOM() {
-  const xElement = document.querySelector('.modal form');
-  const name = document.createElement('h2');
-  name.setAttribute('class', 'photographerName');
-  name.innerText = photographer.name;
-  if (document.querySelector('.photographerName') === null) {
-    xElement.parentNode.insertBefore(name, xElement);
+  closeModal() {
+    this.$main.setAttribute('aria-hidden', 'false');
+    this.$modal.setAttribute('aria-hidden', 'true');
+    this.$modal.style.display = 'none';
+    this.$contactButton.focus();
+  }
+
+  contactHeaderDOM() {
+    const name = document.querySelector('.photographerName');
+    name.innerText = photographer.name;
+  }
+
+  addListener() {
+    this.$contactButton.addEventListener('click', (e) => {
+      this.openModal();
+    });
+    this.$closeButton.addEventListener('click', (e) => {
+      this.closeModal();
+    });
   }
 }
+
+new ContactModal();
+
+// function displayModal() {
+//   const modal = document.getElementById('contact_modal');
+//   modal.style.display = 'block';
+
+//   contactHeaderDOM();
+// }
+
+// function closeModal() {
+//   const modal = document.getElementById('contact_modal');
+//   modal.style.display = 'none';
+// }
+
+// function contactHeaderDOM() {
+//   const name = document.querySelector('.photographerName');
+//   name.innerText = photographer.name;
+// }
 
 function submitInputs() {
   const name = document.querySelector('#name').value;
