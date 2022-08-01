@@ -57,17 +57,18 @@
             alt="Use this to close the contact box"
           />
         </header>
-        <form>
+        <form action="" method="get" id="formId" class="contactMe">
           <div>
-            <label for="name">Prénom</label><br />
-            <input type="text" id="name" /><br />
-            <label for="nom">Nom</label><br />
-            <input type="text" id="nom" /><br />
-            <label for="email">Email</label><br />
-            <input type="email" id="email" /><br /><br />
-            <label for="message">Votre message</label><br />
-            <input type="textarea" id="message" /><br /><br />
-            <button class="contact_button">Envoyer</button>
+            <label for="name">Prénom</label>
+            <input type="text" id="name" required /><br />
+            <label for="last">Nom</label>
+            <input type="text" id="last" required /><br />
+            <label for="email">Email</label>
+            <input type="email" id="email" required /><br />
+            <label for="message">Votre message</label>
+            <input type="textarea" id="message" required /><br />
+            <button type="submit" value="Envoyer" class="submitButton" />
+            Envoyer</button>
           </div>
         </form>
       </div>

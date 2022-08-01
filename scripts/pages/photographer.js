@@ -5,7 +5,7 @@ function getId() {
   return pageId;
 }
 
-//Récupère les données des photgraphes
+//Récupère les données des photographes
 async function getPhotographers() {
   let photographers = await new Api(url).getPhotographersData();
   return photographers;

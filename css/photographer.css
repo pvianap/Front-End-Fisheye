@@ -269,6 +269,19 @@ li {
   color: black;
 }
 
+.submitButton {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -322,6 +335,7 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 36px;
 }
 
 /* LIGHTBOX */
